@@ -1,19 +1,30 @@
+import sys
 # Solicitar coeficientes e termos independentes das equações
-a1 = float(input("Digite o coeficiente a1 da equação para x: "))
-b1 = float(input("Digite o coeficiente b1 da equação para x: "))
-c1 = float(input("Digite o coeficiente c1 da equação para x: "))
-d1 = float(input("Digite o termo independente d1 da equação para x: "))
+a1 = float(input("Digite o coeficiente a11 da equação para Eq1: "))
+b1 = float(input("Digite o coeficiente a12 da equação para Eq1: "))
+c1 = float(input("Digite o coeficiente a13 da equação para Eq1: "))
+d1 = float(input("Digite o termo independente d1 da equação para Eq1: "))
 
-a2 = float(input("Digite o coeficiente a2 da equação para y: "))
-b2 = float(input("Digite o coeficiente b2 da equação para y: "))
-c2 = float(input("Digite o coeficiente c2 da equação para y: "))
-d2 = float(input("Digite o termo independente d2 da equação para y: "))
+a2 = float(input("Digite o coeficiente a21 da equação para Eq2: "))
+b2 = float(input("Digite o coeficiente a22 da equação para Eq2: "))
+c2 = float(input("Digite o coeficiente a23 da equação para Eq2: "))
+d2 = float(input("Digite o termo independente d2 da equação para Eq2: "))
 
-a3 = float(input("Digite o coeficiente a3 da equação para z: "))
-b3 = float(input("Digite o coeficiente b3 da equação para z: "))
-c3 = float(input("Digite o coeficiente c3 da equação para z: "))
-d3 = float(input("Digite o termo independente d3 da equação para z: "))
-
+a3 = float(input("Digite o coeficiente a31 da equação para Eq3: "))
+b3 = float(input("Digite o coeficiente a32 da equação para Eq3: "))
+c3 = float(input("Digite o coeficiente a33 da equação para Eq3: "))
+d3 = float(input("Digite o termo independente d3 da equação para Eq3: "))
+Beta1 = (b1+c1)/a1
+Beta2 = (a2*Beta1+c2)/b2
+Beta3 = (a3*Beta1+b3*Beta2)/c3
+print("Beta1 = ", Beta1)
+print("Beta2 = ", Beta2)
+print("Beta3 = ", Beta3)
+if Beta1 < 1 and Beta2 < 1 and Beta3 < 1:
+    print("O sistema é convergente")
+else:
+    print("O sistema é divergente")
+    sys.exit(0)
 # Solicitar o erro máximo
 erro_maximo = float(input("Digite o erro máximo tolerado: "))
 
@@ -24,7 +35,7 @@ z = float(input("Digite o valor inicial de z: "))
 
 def calcular_x(x_anterior, y_anterior, z_anterior, a1, b1, c1, d1):
     """
-    Calcula o novo valor de x usando o método de Gauss-Seidel.
+    Calcula o novo valor de x usando o método de Gauss-Seidel
 
     Args:
         x_anterior: Valor anterior de x.
@@ -49,15 +60,7 @@ def calcular_y_e_z(x, y_anterior, z_anterior, a2, b2, c2, d2, a3, b3, c3, d3):
         x: Valor atual de x.
         y_anterior: Valor anterior de y.
         z_anterior: Valor anterior de z.
-        a2: Coeficiente a2 da equação para y.
-        b2: Coeficiente b2 da equação para y.
-        c2: Coeficiente c2 da equação para y.
-        d2: Termo independente d2 da equação para y.
-        a3: Coeficiente a3 da equação para z.
-        b3: Coeficiente b3 da equação para z.
-        c3: Coeficiente c3 da equação para z.
-        d3: Termo independente d3 da equação para z.
-
+     
     Returns:
         Tupla com os novos valores de y e z.
     """
@@ -100,7 +103,6 @@ while True:
 # Exibir os resultados
 
 print("\nSolução final:")
-print("x =", x)
-print("y =", y)
-print("z =", z)
-
+print("x =", round(x,4))
+print("y =", round(y,4))
+print("z =", round(z,4))
