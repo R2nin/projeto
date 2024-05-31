@@ -14,9 +14,9 @@ a3 = float(input("Digite o coeficiente a31 da equação para Eq3: "))
 b3 = float(input("Digite o coeficiente a32 da equação para Eq3: "))
 c3 = float(input("Digite o coeficiente a33 da equação para Eq3: "))
 d3 = float(input("Digite o termo independente d3 da equação para Eq3: "))
-Beta1 = (b1+c1)/a1
-Beta2 = (a2*Beta1+c2)/b2
-Beta3 = (a3*Beta1+b3*Beta2)/c3
+Beta1 = abs((b1+c1)/a1)
+Beta2 = abs((a2*Beta1+c2)/b2)
+Beta3 = abs((a3*Beta1+b3*Beta2)/c3)
 print("Beta1 = ", Beta1)
 print("Beta2 = ", Beta2)
 print("Beta3 = ", Beta3)
@@ -29,10 +29,12 @@ else:
 erro_maximo = float(input("Digite o erro máximo tolerado: "))
 
 # Definir valores iniciais
-x = float(input("Digite o valor inicial de x: "))
-y = float(input("Digite o valor inicial de y: "))
-z = float(input("Digite o valor inicial de z: "))
-
+x = d1/a1
+y = d2/b2
+z = d3/c3
+print("x =", x)
+print("y =", y)
+print("z =", z)
 def calcular_x(x_anterior, y_anterior, z_anterior, a1, b1, c1, d1):
     """
     Calcula o novo valor de x usando o método de Gauss-Seidel
