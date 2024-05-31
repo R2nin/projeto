@@ -32,6 +32,7 @@ erro_maximo = float(input("Digite o erro máximo tolerado: "))
 x = d1/a1
 y = d2/b2
 z = d3/c3
+print("\nValores iniciais:")
 print("x =", x)
 print("y =", y)
 print("z =", z)
